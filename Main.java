@@ -1,10 +1,18 @@
+import java.util.Scanner;
+import java.text.DecimalFormat;
+import ru.netology.finances.Finances;
 class Main {
+  
   public static void main(String[] args) {
-    String name = "Valentin";
-    String surname = "Zaicev";
-    int income = 20000;
-    int spending = 10000;
-    int surplus = income - spending;
-    System.out.println(name + " " + surname + " " + surplus + "руб");
+    DecimalFormat df = new DecimalFormat("###.##");
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Введи общую сумму покупки");
+    double amount = scanner.nextDouble();
+    System.out.println("Введи первоначальный взнос");
+    double start = scanner.nextDouble();
+    System.out.println("Введи количество лет, на которое дана рассрочка");
+    double years = scanner.nextDouble();
+    double payment  = Finances.calcPayment(start, amount, years);
+    System.out.println("Ежемесячный платёж" + " " + df.format(payment) + "рублей" );
   }
 }
